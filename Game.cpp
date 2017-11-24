@@ -4,7 +4,7 @@ Game::Game()
 {
 	m_MushroomTexture.loadFromFile("Mushroom.png");
 	m_Mushroom.setTexture(m_MushroomTexture);
-	m_MushroomIncrement = sf::Vector2i(4, 4);
+	m_MushroomIncrement = sf::Vector2i(400, 400);
 }
 
 GameWindow * Game::GetWindow()
@@ -46,5 +46,7 @@ void Game::MoveMushroom()
 		m_MushroomIncrement.y = -m_MushroomIncrement.y;
 	}
 
-	m_Mushroom.setPosition(m_Mushroom.getPosition().x + m_MushroomIncrement.x, m_Mushroom.getPosition().y + m_MushroomIncrement.y);
+	float ElaspedTime = m_ElaspedGameTime.asSeconds();
+
+	m_Mushroom.setPosition(m_Mushroom.getPosition().x + (m_MushroomIncrement.x * ElaspedTime), m_Mushroom.getPosition().y + (m_MushroomIncrement.y * ElaspedTime));
 }
