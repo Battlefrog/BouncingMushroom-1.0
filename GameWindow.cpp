@@ -21,19 +21,17 @@ void GameWindow::Update()
 
 	while (m_GameWindow.pollEvent(event))
 	{
-		switch (event.type)
+		if (event.type == sf::Event::Closed)
 		{
-			case sf::Event::Closed:
-				m_IsDone = true;
-				break;
+			m_IsDone = true;
+		}
 
-			case sf::Event::KeyPressed:
-				case sf::Keyboard::F5:
-					ToggleFullscreen();
-					break;
-
-			default:
-				break;
+		if (event.type == sf::Event::KeyPressed)
+		{
+			if (event.key.code == sf::Keyboard::F5)
+			{
+				ToggleFullscreen();
+			}
 		}
 	}
 }
